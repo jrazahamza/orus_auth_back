@@ -6,6 +6,9 @@ const authRoutes = require('./routes/authRoute');
 const searchHotel = require('./routes/searchHotel');	
 const flightSearch = require('./routes/flightRoute');
 const hotelSearching = require('./routes/hotelSearching2');	
+const chatRoute = require('./routes/ChatRoute');
+const itinaryRoute = require('./routes/Itinary');
+const hotelSearchRoute = require('./routes/HotelSearchRoute');
 const app = express();
 
 
@@ -25,6 +28,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api', searchHotel);
 app.use('/api', flightSearch);
 app.use('/api', hotelSearching);
+app.use('/api', chatRoute);
+app.use('/api', itinaryRoute);
+app.use('/api', hotelSearchRoute)
 
 
 // MongoDB Connection
