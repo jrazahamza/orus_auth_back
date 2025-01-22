@@ -3,12 +3,10 @@ const axios = require('axios');
 require('dotenv').config();
 
 const router = express.Router();
-
-// POST: Generate travel itinerary
 router.post('/chat-itinary', async (req, res) => {
   const { companion, activities, personality, travelMonth } = req.body;
 
-  // Validate input
+ 
   if (!companion || !activities || !personality || !travelMonth) {
     return res.status(400).json({
       error: 'All fields are required: companion, activities, personality, travelMonth.',
@@ -16,7 +14,7 @@ router.post('/chat-itinary', async (req, res) => {
   }
 
   try {
-    // Create dynamic prompt for OpenAI
+
     const prompt = `
 You are a travel assistant. Based on the user's preferences, generate a detailed travel itinerary. Here are the inputs:
 1. Companion: ${companion}.
@@ -37,7 +35,7 @@ Format the response as a JSON object with keys:
 - "alignment" (description of how this suits the personality).
     `;
 
-    // Call OpenAI API
+
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
@@ -52,7 +50,6 @@ Format the response as a JSON object with keys:
       }
     );
 
-    // Parse and return the response
     const itineraryResponse = JSON.parse(response.data.choices[0].message.content);
     res.json(itineraryResponse);
   } catch (error) {

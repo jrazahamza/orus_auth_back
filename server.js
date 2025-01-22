@@ -6,7 +6,9 @@ const authRoutes = require('./routes/authRoute');
 const searchHotel = require('./routes/searchHotel');	
 const flightSearch = require('./routes/flightRoute');
 const hotelSearching = require('./routes/hotelSearching2');	
-const chatRoutes = require('./routes/ChatRoute')
+const chatRoutes = require('./routes/ChatRoute');
+const questionsRoute = require('./routes/Questions');
+const bookingApiRoute = require('./routes/Bookingcom');
 const app = express();
 
 
@@ -27,7 +29,8 @@ app.use('/api', searchHotel);
 app.use('/api', flightSearch);
 app.use('/api', hotelSearching);
 app.use('/api', chatRoutes);
-
+app.use('/api', questionsRoute);
+app.use('/api', bookingApiRoute);
 
 // MongoDB Connection
 mongoose
